@@ -8,7 +8,7 @@ class V1::ImagesController < ApplicationController
     image = Dragonfly.app.fetch_url(V1::ImageService.parse_img_url(image_id))
     height = nil if height == 0
     width  = nil if width == 0
-    resized_image = image.thumb("#{width}x#{height}")
+    resized_image = image.resize("#{width}x#{height}")
     uid = resized_image.store
     ok({ image_url: Dragonfly.app.remote_url_for(uid) })
   end

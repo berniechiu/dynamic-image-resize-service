@@ -9,7 +9,6 @@ class V1::ImagesController < ApplicationController
     height = nil if height == 0
     width  = nil if width == 0
     resized_image = image.resize("#{width}x#{height}")
-    uid = resized_image.store
-    ok({ image_url: Dragonfly.app.remote_url_for(uid) })
+    send_data resized_image, type: resized_image.mime_type, disposition: 'inline'
   end
 end

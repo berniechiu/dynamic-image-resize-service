@@ -16,6 +16,9 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Load secrets
+require 'dotenv/load'
+
 module ImageService
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

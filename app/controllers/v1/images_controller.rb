@@ -9,6 +9,6 @@ class V1::ImagesController < ApplicationController
     height = nil if height == 0
     width  = nil if width == 0
     resized_image = image.resize("#{width}x#{height}")
-    send_data resized_image, type: resized_image.mime_type, disposition: 'inline'
+    send_data resized_image, type: resized_image.mime_type, disposition: 'inline' if stale?(resized_image)
   end
 end

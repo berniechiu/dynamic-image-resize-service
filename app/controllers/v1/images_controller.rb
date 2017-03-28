@@ -1,12 +1,15 @@
 class V1::ImagesController < ApplicationController
   def resize
-    target_image_url = params[:image_url].to_s
+    image_id = params[:image_id].to_s
     height = params[:height].to_i
     width  = params[:width].to_i
-    error("Required parameters not met!") if target_image_url.blank? || height.blank? || width.blank?
+    error("Required parameters not met!") unless V1::ImageService.validate_resize_params(image_id, height, width)
 
-    image = Dragonfly.app.fetch_url(target_image_url)
+    image = Dragonfly.app.fetch_url(V1::ImageService.parse_img_url(image_id))
+    height = nil if height == 0
+    width  = nil if width == 0
     resized_image = image.thumb("#{width}x#{height}")
-    ok({ image_url: resized_image.url })
+    uid = resized_image.store
+    ok({ image_url: Dragonfly.app.remote_url_for(uid) })
   end
 end

@@ -22,3 +22,6 @@
 
 # Images
 public/system/dragonfly
+
+# Ignore secrets
+.env

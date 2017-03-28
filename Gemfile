@@ -39,3 +39,6 @@ end
 
 # Image Processor
 gem 'dragonfly', '~> 1.1.1'
+
+# Secret management
+gem 'dotenv', '~> 2.1.2'

@@ -1,24 +1,34 @@
-# README
+## Docker System Version
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version `2.3.3`
 
-Things you may want to cover:
+Rails version `5.0.2`
 
-* Ruby version
+Puma version `3.8.2`
 
-* System dependencies
+Nginx version `up-to-date`
 
-* Configuration
+## How to Setup
 
-* Database creation
+Build images
 
-* Database initialization
+`$ docker-compose build`
 
-* How to run the test suite
+Make sure images are built
 
-* Services (job queues, cache servers, search engines, etc.)
+`$ docker images`
 
-* Deployment instructions
+To run containers via docker-compose
 
-* ...
+`$ docker-compose up`
+
+## How to Use
+
+Send resize request and return resized image file (Resize propotionally)
+`http://localhost:3000/v1/images/{{image_id}}?height=100&width=100`
+
+Or specific format for the image id
+`http://localhost:3000/v1/images/{{image_id}}?height=100&width=100&format=png`
+
+Or with single param
+`http://localhost:3000/v1/images/{{image_id}}?width=100`

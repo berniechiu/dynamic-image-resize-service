@@ -12,9 +12,9 @@ Dragonfly.app.configure do
   processor :resize do |content, dimensions, *args|
     args    = args.first || {}
     format  = args[:format] || 'jpeg'
-    quality = args[:quality] || 70
-    #   convert -resize 80x80 -format jpg -quality 70
-    content.process! :convert, "-resize #{dimensions} -format #{format} -quality #{quality}"
+    quality = args[:quality] || 90
+    # convert -filter Lanczos2 -distort resize 80x80 -format jpg -quality 70
+    content.process! :convert, "-filter Lanczos2 -distort resize #{dimensions} -format #{format} -quality #{quality}"
   end
 
   datastore :file,

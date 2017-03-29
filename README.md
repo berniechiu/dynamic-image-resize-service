@@ -10,6 +10,11 @@ Nginx version `up-to-date`
 
 ## How to Setup
 
+Setup specific environment config
+
+`$ cp .env.example .env`
+`$ vi .env`
+
 Build images
 
 `$ docker-compose build`

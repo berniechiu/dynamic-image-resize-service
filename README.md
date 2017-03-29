@@ -13,6 +13,7 @@ Nginx version `up-to-date`
 Setup specific environment config
 
 `$ cp .env.example .env`
+
 `$ vi .env`
 
 Build images
@@ -30,10 +31,13 @@ To run containers via docker-compose
 ## How to Use
 
 Send resize request and return resized image file (Resize propotionally)
-`http://localhost:3000/v1/images/{{image_id}}?height=100&width=100`
+
+`http://localhost:80/v1/images/{{image_id}}?height=100&width=100`
 
 Or specific format for the image id
-`http://localhost:3000/v1/images/{{image_id}}?height=100&width=100&format=png`
+
+`http://localhost:80/v1/images/{{image_id}}?height=100&width=100&format=png`
 
 Or with single param
-`http://localhost:3000/v1/images/{{image_id}}?width=100`
+
+`http://localhost:80/v1/images/{{image_id}}?width=100`
